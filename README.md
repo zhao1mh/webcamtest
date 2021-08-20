@@ -14,7 +14,7 @@ Date: 7/12/2021
 
 Build:
 
-sudo apt-get install libusb-dev 
+sudo apt-get install libusb-1.0-0-dev libsdl2-dev
 
 git clone http://github.com/zhao1mh/webcamtest.git
 
