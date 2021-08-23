@@ -8,7 +8,7 @@ Tested Platform: RaspberryPi 400
 
 Author: Eddie Zhao
 
-Version : 0.1
+Version : 1.02
 
 Date: 8/12/2021Cancel changes
 
