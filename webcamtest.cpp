@@ -20,7 +20,7 @@ Date          :   8/12/2021
 using namespace std;
 
 #define VID                     0x04b4
-#define PID                     0x00f9
+#define PID                     0x00c3
 #define totaltime               10                   //Test time
 #define buffercount             16                    //Buffer amount used to store data
 #define buffersize              0x10000               //Size for one data buffer
@@ -109,7 +109,7 @@ static void bulkcallback(struct libusb_transfer *transfer){
 	     else
 	     {
 		     framesize=0;
-		     //cout<<"frame size incorrect, frame discarded"<<endl;
+		     cout<<"frame size incorrect, frame discarded"<<endl;
 	     }
 	}
 	else
