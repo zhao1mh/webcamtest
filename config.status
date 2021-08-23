@@ -431,7 +431,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/pi/Documents/webcamtest2/webcamtest'
+ac_pwd='/home/yi/Downloads/webcamtest2/webcamtest'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/usr/bin/mkdir -p'
@@ -599,8 +599,8 @@ S["am__EXEEXT_FALSE"]=""
 S["am__EXEEXT_TRUE"]="#"
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
-S["webcamtest_LIBS"]="-L/usr/local/lib -lusb-1.0"
-S["webcamtest_CFLAGS"]="-I/usr/local/include/libusb-1.0"
+S["webcamtest_LIBS"]="-lusb-1.0"
+S["webcamtest_CFLAGS"]="-I/usr/include/libusb-1.0"
 S["PKG_CONFIG_LIBDIR"]=""
 S["PKG_CONFIG_PATH"]=""
 S["PKG_CONFIG"]="/usr/bin/pkg-config"
@@ -634,12 +634,12 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/usr/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]=""
-S["install_sh"]="${SHELL} /home/pi/Documents/webcamtest2/webcamtest/install-sh"
-S["MAKEINFO"]="${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing autoheader"
-S["AUTOMAKE"]="${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing automake-1.16"
-S["AUTOCONF"]="${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing autoconf"
-S["ACLOCAL"]="${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing aclocal-1.16"
+S["install_sh"]="${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/install-sh"
+S["MAKEINFO"]="${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing makeinfo"
+S["AUTOHEADER"]="${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing autoheader"
+S["AUTOMAKE"]="${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing automake-1.16"
+S["AUTOCONF"]="${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing autoconf"
+S["ACLOCAL"]="${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing aclocal-1.16"
 S["VERSION"]="1.0"
 S["PACKAGE"]="webcamtest"
 S["CYGPATH_W"]="echo"

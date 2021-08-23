@@ -103,9 +103,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_webcamtest_OBJECTS = webcamtest.$(OBJEXT)
 webcamtest_OBJECTS = $(am_webcamtest_OBJECTS)
-webcamtest_LDADD = $(LDADD)
-webcamtest_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
-	$(webcamtest_LDFLAGS) $(LDFLAGS) -o $@
+webcamtest_DEPENDENCIES =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -275,7 +273,7 @@ webcamtest_LIBS = @webcamtest_LIBS@
 AUTOMAKE_OPTIONS = foreign
 webcamtest_SOURCES = webcamtest.cpp
 #videotest_LDADD=/usr/local/lib/libusb-1.0.la
-webcamtest_LDFLAGS = -lusb-1.0 -lSDL2 -lpthread
+webcamtest_LDADD = -lusb-1.0 -lSDL2 -lpthread
 all: all-am
 
 .SUFFIXES:
@@ -358,7 +356,7 @@ clean-binPROGRAMS:
 
 webcamtest$(EXEEXT): $(webcamtest_OBJECTS) $(webcamtest_DEPENDENCIES) $(EXTRA_webcamtest_DEPENDENCIES) 
 	@rm -f webcamtest$(EXEEXT)
-	$(AM_V_CXXLD)$(webcamtest_LINK) $(webcamtest_OBJECTS) $(webcamtest_LDADD) $(LIBS)
+	$(AM_V_CXXLD)$(CXXLINK) $(webcamtest_OBJECTS) $(webcamtest_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)

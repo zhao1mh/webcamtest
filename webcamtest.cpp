@@ -19,7 +19,9 @@ Date          :   8/12/2021
 #include<pthread.h>
 using namespace std;
 
-#define totaltime               100                   //Test time
+#define VID                     0x04b4
+#define PID                     0x00f9
+#define totaltime               10                   //Test time
 #define buffercount             16                    //Buffer amount used to store data
 #define buffersize              0x10000               //Size for one data buffer
 
@@ -34,7 +36,10 @@ SDL_Renderer *renderer;
 SDL_Texture *VideoTexture;
 
 bool framecomplete=false;
+
+pthread_t USBAppThread,DisplayAppThread;
 pthread_mutex_t mutex1;
+pthread_cond_t CreateWindow;
 
 
 
@@ -121,11 +126,12 @@ void *USBAppThreadEntry(void *arg){
 	int streamaddress=-1; 
        
        	libusb_init(NULL);
-       	device_handle = libusb_open_device_with_vid_pid(NULL,0x04b4,0x00f9);  
+       	device_handle = libusb_open_device_with_vid_pid(NULL,VID,PID);  
 	if(device_handle==NULL)
 	{
 		cout<<"No Cypress device found"<<endl;
-		return 0;
+                pthread_cancel(DisplayAppThread);
+		pthread_exit(NULL);
 	}
 	device = libusb_get_device(device_handle);
 	struct libusb_device_descriptor  desc;
@@ -169,7 +175,10 @@ void *USBAppThreadEntry(void *arg){
 		}
 		}
 	}
-	
+	pthread_mutex_lock(&mutex1);
+	pthread_cond_signal(&CreateWindow);
+	pthread_mutex_unlock(&mutex1);
+       
 	bitmap = (Uint8 *)calloc(frametotalsize*2,sizeof(Uint8));//assign memory for image here.
 	
 	int status=0;
@@ -181,7 +190,8 @@ void *USBAppThreadEntry(void *arg){
 	if(status!=0)
 	{
 		printf("detach error code %x\r\n",status);
-		return 0;
+                pthread_cancel(DisplayAppThread);
+		pthread_exit(NULL);
 	}
 	else
 	{
@@ -279,7 +289,9 @@ void *DisplayAppThreadEntry(void *arg){
 	unsigned int timeinterval;
 	SDL_Window *window;
 	SDL_RWops *VideoHandle;
-
+        pthread_mutex_lock(&mutex1);
+	pthread_cond_wait(&CreateWindow,&mutex1);
+	pthread_mutex_unlock(&mutex1);
 	SDL_LogSetPriority(SDL_LOG_CATEGORY_APPLICATION,SDL_LOG_PRIORITY_INFO);
 
 	if(SDL_Init(SDL_INIT_VIDEO)<0){
@@ -350,7 +362,6 @@ return NULL;
 
 int main()
 {
-        pthread_t USBAppThread,DisplayAppThread;
 	pthread_mutex_init(&mutex1,NULL);
         
 	
@@ -365,7 +376,9 @@ int main()
 	}
         pthread_join(USBAppThread,NULL);
         pthread_join(DisplayAppThread,NULL);	
-
+        
+	pthread_mutex_destroy(&mutex1);
+	pthread_cond_destroy(&CreateWindow);
         free(bitmap);
 	return 0; 
 }

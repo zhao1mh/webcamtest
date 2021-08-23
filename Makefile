@@ -103,9 +103,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_webcamtest_OBJECTS = webcamtest.$(OBJEXT)
 webcamtest_OBJECTS = $(am_webcamtest_OBJECTS)
-webcamtest_LDADD = $(LDADD)
-webcamtest_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
-	$(webcamtest_LDFLAGS) $(LDFLAGS) -o $@
+webcamtest_DEPENDENCIES =
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -182,12 +180,12 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing aclocal-1.16
+ACLOCAL = ${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing aclocal-1.16
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing autoconf
-AUTOHEADER = ${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing autoheader
-AUTOMAKE = ${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing automake-1.16
+AUTOCONF = ${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing autoconf
+AUTOHEADER = ${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing autoheader
+AUTOMAKE = ${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing automake-1.16
 AWK = mawk
 CPPFLAGS = 
 CXX = g++
@@ -209,7 +207,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/pi/Documents/webcamtest2/webcamtest/missing makeinfo
+MAKEINFO = ${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/missing makeinfo
 MKDIR_P = /usr/bin/mkdir -p
 OBJEXT = o
 PACKAGE = webcamtest
@@ -227,10 +225,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 1.0
-abs_builddir = /home/pi/Documents/webcamtest2/webcamtest
-abs_srcdir = /home/pi/Documents/webcamtest2/webcamtest
-abs_top_builddir = /home/pi/Documents/webcamtest2/webcamtest
-abs_top_srcdir = /home/pi/Documents/webcamtest2/webcamtest
+abs_builddir = /home/yi/Downloads/webcamtest2/webcamtest
+abs_srcdir = /home/yi/Downloads/webcamtest2/webcamtest
+abs_top_builddir = /home/yi/Downloads/webcamtest2/webcamtest
+abs_top_srcdir = /home/yi/Downloads/webcamtest2/webcamtest
 ac_ct_CXX = g++
 am__include = include
 am__leading_dot = .
@@ -249,7 +247,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/pi/Documents/webcamtest2/webcamtest/install-sh
+install_sh = ${SHELL} /home/yi/Downloads/webcamtest2/webcamtest/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -270,12 +268,12 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-webcamtest_CFLAGS = -I/usr/local/include/libusb-1.0
-webcamtest_LIBS = -L/usr/local/lib -lusb-1.0
+webcamtest_CFLAGS = -I/usr/include/libusb-1.0
+webcamtest_LIBS = -lusb-1.0
 AUTOMAKE_OPTIONS = foreign
 webcamtest_SOURCES = webcamtest.cpp
 #videotest_LDADD=/usr/local/lib/libusb-1.0.la
-webcamtest_LDFLAGS = -lusb-1.0 -lSDL2 -lpthread
+webcamtest_LDADD = -lusb-1.0 -lSDL2 -lpthread
 all: all-am
 
 .SUFFIXES:
@@ -358,7 +356,7 @@ clean-binPROGRAMS:
 
 webcamtest$(EXEEXT): $(webcamtest_OBJECTS) $(webcamtest_DEPENDENCIES) $(EXTRA_webcamtest_DEPENDENCIES) 
 	@rm -f webcamtest$(EXEEXT)
-	$(AM_V_CXXLD)$(webcamtest_LINK) $(webcamtest_OBJECTS) $(webcamtest_LDADD) $(LIBS)
+	$(AM_V_CXXLD)$(CXXLINK) $(webcamtest_OBJECTS) $(webcamtest_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
