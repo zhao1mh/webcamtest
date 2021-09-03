@@ -2,7 +2,7 @@
 
 webcamtest.cpp
 
-This is a simple exmaple webcam test program using SDL2. It only support yuy2 format. The UVC device should have VID:0x04b4&PID:0x00f9
+This is a simple example webcam test program using SDL2. It only support yuy2 format. The UVC device should have VID:0x04b4&PID:0x00f9.
 
 Tested Platform: RaspberryPi 400 & Ubuntu
 
